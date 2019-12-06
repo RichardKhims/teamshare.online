@@ -1,5 +1,9 @@
 package org.teamshare.specificator.servlets;
 
+import org.teamshare.specificator.services.SpecificatorService;
+import org.teamshare.specificator.services.SpecificatorServiceQualifier;
+
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +13,10 @@ import java.io.IOException;
 
 @WebServlet("/")
 public class SpecificatorServlet extends HttpServlet {
+    @Inject
+    @SpecificatorServiceQualifier
+    private SpecificatorService specificatorService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().println("It works!");

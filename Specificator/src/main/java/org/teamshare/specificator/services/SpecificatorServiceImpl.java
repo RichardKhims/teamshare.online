@@ -5,6 +5,7 @@ import org.teamshare.specificator.dao.hibernate.HibernateSpecificatorManagerQual
 
 import javax.inject.Inject;
 
+@SpecificatorServiceQualifier
 public class SpecificatorServiceImpl implements SpecificatorService {
     @Inject
     @HibernateSpecificatorManagerQualifier

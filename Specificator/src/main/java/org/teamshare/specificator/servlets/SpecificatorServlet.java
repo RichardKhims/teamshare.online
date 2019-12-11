@@ -2,6 +2,7 @@ package org.teamshare.specificator.servlets;
 
 import org.teamshare.specificator.services.SpecificatorService;
 import org.teamshare.specificator.services.SpecificatorServiceQualifier;
+import org.teamshare.specificator.utils.SerializeUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,7 +20,13 @@ public class SpecificatorServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("It works!");
+        try {
+            String responseBody = SerializeUtils.toJson(specificatorService.getSpecificators());
+            resp.getWriter().println(responseBody);
+        } catch (Exception e) {
+            resp.setStatus(500);
+            resp.getWriter().println("Internal error");
+        }
     }
 
     @Override

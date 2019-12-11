@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @HibernateSpecificatorManagerQualifier
 public class SpecificatorDBManager implements SpecificatorDAO {
@@ -49,5 +50,18 @@ public class SpecificatorDBManager implements SpecificatorDAO {
 
         Query<Specificator> query = HibernateUtils.getCurrentSession().createQuery(criteriaQuery);
         return query.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public List<Specificator> getSpecificators() {
+        CriteriaBuilder criteriaBuilder = HibernateUtils.createCriteriaBuilder();
+        CriteriaQuery<Specificator> criteriaQuery = criteriaBuilder.createQuery(Specificator.class);
+        Root<Specificator> root = criteriaQuery.from(Specificator.class);
+
+        criteriaQuery.select(root);
+
+        Query<Specificator> query = HibernateUtils.getCurrentSession().createQuery(criteriaQuery);
+        return query.getResultList();
     }
 }

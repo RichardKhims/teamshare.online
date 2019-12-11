@@ -6,39 +6,40 @@ import java.util.Date;
 @Entity
 @Table(name = "specifications")
 public class Specificator {
+
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
-    @Column(name = "title")
+    @Column(name = SpecificatorColumns.TITLE_COLUMN)
     private String title;
 
-    @Column(name = "price", precision = 2)
+    @Column(name = SpecificatorColumns.PRICE_COLUMN)
     private Double price;
 
-    @Column(name = "created_agent_id")
+    @Column(name = SpecificatorColumns.CREATED_AGENT_ID_COLUMN)
     private Integer createdAgentId;
 
-    @Column(name = "last_modified_agent_id")
-    private Integer lasyModifiedAgentId;
+    @Column(name = SpecificatorColumns.LAST_MODIFIED_AGENT_ID_COLUMN)
+    private Integer lastModifiedAgentId;
 
-    @Column(name = "created")
+    @Column(name = SpecificatorColumns.CREATED_COLUMN)
     private Date created;
 
-    @Column(name = "last_modified")
+    @Column(name = SpecificatorColumns.LAST_MODIFIED_COLUMN)
     private Date lastModified;
 
-    @Column(name = "json_data")
+    @Column(name = SpecificatorColumns.DATA_COLUMN)
     private String jsonData;
 
-    @Column(name = "hash")
+    @Column(name = SpecificatorColumns.HASH_COLUMN)
     private String hash;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,12 +67,12 @@ public class Specificator {
         this.createdAgentId = createdAgentId;
     }
 
-    public Integer getLasyModifiedAgentId() {
-        return lasyModifiedAgentId;
+    public Integer getLastModifiedAgentId() {
+        return lastModifiedAgentId;
     }
 
-    public void setLasyModifiedAgentId(Integer lasyModifiedAgentId) {
-        this.lasyModifiedAgentId = lasyModifiedAgentId;
+    public void setLastModifiedAgentId(Integer lasyModifiedAgentId) {
+        this.lastModifiedAgentId = lasyModifiedAgentId;
     }
 
     public Date getCreated() {

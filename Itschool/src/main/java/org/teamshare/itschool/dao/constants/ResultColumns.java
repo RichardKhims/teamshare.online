@@ -1,4 +1,4 @@
-package org.teamshare.itschool.dao.contants;
+package org.teamshare.itschool.dao.constants;
 
 public interface ResultColumns {
     String STUDENT_ID_COLUMN = "student_id";

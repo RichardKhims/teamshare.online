@@ -1,8 +1,8 @@
 package org.teamshare.itschool.servlets;
 
-import org.teamshare.specificator.services.SpecificatorService;
-import org.teamshare.specificator.services.SpecificatorServiceQualifier;
-import org.teamshare.specificator.utils.SerializeUtils;
+import org.teamshare.itschool.services.CourseService;
+import org.teamshare.itschool.services.CourseServiceQualifier;
+import org.teamshare.itschool.utils.SerializeUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,14 +15,14 @@ import java.io.IOException;
 @WebServlet("/")
 public class SpecificatorServlet extends HttpServlet {
     @Inject
-    @SpecificatorServiceQualifier
-    private SpecificatorService specificatorService;
+    @CourseServiceQualifier
+    private CourseService courseService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String responseBody = SerializeUtils.toJson(specificatorService.getSpecificators());
-            resp.getWriter().println(responseBody);
+//            String responseBody = SerializeUtils.toJson(courseService.getSpecificators());
+//            resp.getWriter().println(responseBody);
         } catch (Exception e) {
             resp.setStatus(500);
             resp.getWriter().println("Internal error");

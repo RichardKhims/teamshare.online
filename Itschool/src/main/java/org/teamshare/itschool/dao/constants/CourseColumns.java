@@ -1,4 +1,4 @@
-package org.teamshare.itschool.dao.contants;
+package org.teamshare.itschool.dao.constants;
 
 public interface CourseColumns {
     String NAME_COLUMN = "name";

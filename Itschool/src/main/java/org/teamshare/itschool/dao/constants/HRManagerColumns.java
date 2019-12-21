@@ -1,4 +1,4 @@
-package org.teamshare.itschool.dao.contants;
+package org.teamshare.itschool.dao.constants;
 
 public interface HRManagerColumns {
     String FULLNAME_COLUMN = "fullname";

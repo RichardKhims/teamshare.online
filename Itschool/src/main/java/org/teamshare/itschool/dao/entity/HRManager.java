@@ -1,6 +1,6 @@
 package org.teamshare.itschool.dao.entity;
 
-import org.teamshare.itschool.dao.contants.HRManagerColumns;
+import org.teamshare.itschool.dao.constants.HRManagerColumns;
 
 import javax.persistence.*;
 

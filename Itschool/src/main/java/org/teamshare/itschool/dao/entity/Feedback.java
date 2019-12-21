@@ -1,6 +1,6 @@
 package org.teamshare.itschool.dao.entity;
 
-import org.teamshare.itschool.dao.contants.FeedbackColumns;
+import org.teamshare.itschool.dao.constants.FeedbackColumns;
 
 import javax.persistence.*;
 

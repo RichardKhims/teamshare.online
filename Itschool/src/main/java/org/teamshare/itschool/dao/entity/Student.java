@@ -1,6 +1,6 @@
 package org.teamshare.itschool.dao.entity;
 
-import org.teamshare.itschool.dao.contants.StudentColumns;
+import org.teamshare.itschool.dao.constants.StudentColumns;
 
 import javax.persistence.*;
 import java.util.List;

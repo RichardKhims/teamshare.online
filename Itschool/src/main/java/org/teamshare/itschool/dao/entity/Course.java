@@ -3,6 +3,7 @@ package org.teamshare.itschool.dao.entity;
 import org.teamshare.itschool.dao.contants.CourseColumns;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -22,6 +23,15 @@ public class Course {
 
     @Column(name = CourseColumns.DESCRIPTION_URL)
     private String descriptionUrl;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<CourseDuration> durations;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Result> results;
 
     public Long getId() {
         return id;
@@ -61,5 +71,29 @@ public class Course {
 
     public void setDescriptionUrl(String descriptionUrl) {
         this.descriptionUrl = descriptionUrl;
+    }
+
+    public List<CourseDuration> getDurations() {
+        return durations;
+    }
+
+    public void setDurations(List<CourseDuration> durations) {
+        this.durations = durations;
+    }
+
+    public List<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 }

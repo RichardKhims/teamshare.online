@@ -5,6 +5,9 @@ import org.teamshare.itschool.dao.constants.CourseColumns;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Информация о различных дисциплинах курсов обучения
+ */
 @Entity
 @Table(name = "courses")
 public class Course {

@@ -4,6 +4,9 @@ import org.teamshare.itschool.dao.constants.ResultColumns;
 
 import javax.persistence.*;
 
+/**
+ * Результат(оценка) о прохождения курса студентом
+ */
 @Entity
 @Table(name = "results")
 public class Result {

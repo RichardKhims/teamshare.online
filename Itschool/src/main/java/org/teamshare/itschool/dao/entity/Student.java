@@ -5,6 +5,9 @@ import org.teamshare.itschool.dao.constants.StudentColumns;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Информация о студенте
+ */
 @Entity
 @Table(name = "students")
 public class Student {

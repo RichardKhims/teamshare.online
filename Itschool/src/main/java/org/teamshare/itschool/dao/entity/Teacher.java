@@ -4,6 +4,9 @@ import org.teamshare.itschool.dao.constants.TeacherColumns;
 
 import javax.persistence.*;
 
+/**
+ * Преподаватели курсов
+ */
 @Entity
 @Table(name = "teachers")
 public class Teacher {

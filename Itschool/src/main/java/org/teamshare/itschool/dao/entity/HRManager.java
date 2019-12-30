@@ -4,6 +4,9 @@ import org.teamshare.itschool.dao.constants.HRManagerColumns;
 
 import javax.persistence.*;
 
+/**
+ * HR-менеджеры компаний
+ */
 @Entity
 @Table(name = "hr_managers")
 public class HRManager {

@@ -5,6 +5,9 @@ import org.teamshare.itschool.dao.constants.CourseDurationColumns;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Информация о проводимых курсах по различным дисциплинам
+ */
 @Entity
 @Table(name = "course_durations")
 public class CourseDuration {

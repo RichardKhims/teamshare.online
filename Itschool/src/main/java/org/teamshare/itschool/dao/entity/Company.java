@@ -5,6 +5,9 @@ import org.teamshare.itschool.dao.constants.CompanyColumns;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Информация об IT-компаниях
+ */
 @Entity
 @Table(name = "companies")
 public class Company {

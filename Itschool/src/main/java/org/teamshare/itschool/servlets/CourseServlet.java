@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/")
-public class SpecificatorServlet extends HttpServlet {
+public class CourseServlet extends HttpServlet {
     @Inject
     @CourseServiceQualifier
     private CourseService courseService;

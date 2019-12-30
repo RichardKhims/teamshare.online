@@ -4,6 +4,9 @@ import org.teamshare.itschool.dao.constants.FeedbackColumns;
 
 import javax.persistence.*;
 
+/**
+ * Отзывы студентов о курсах
+ */
 @Entity
 @Table(name = "feedbacks")
 public class Feedback {

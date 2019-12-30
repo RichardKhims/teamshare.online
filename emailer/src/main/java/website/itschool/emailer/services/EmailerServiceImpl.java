@@ -15,11 +15,10 @@ public class EmailerServiceImpl implements EmailerService {
     private int MAX_SIZE = 100;
     private int PERIOD_MIN = 20;
     private final String filename = "/root/subscriptions.csv";
-    private FileWriter fr = new FileWriter(new File(filename),true);
 
     private final Set<Subscription> subscriptions = new HashSet<Subscription>();
 
-    public EmailerServiceImpl() throws IOException {
+    public EmailerServiceImpl() {
     }
 
     public boolean send(Subscription subscription, Subscription sessionSubscription) throws Exception {
@@ -60,7 +59,8 @@ public class EmailerServiceImpl implements EmailerService {
         }
     }
 
-    private synchronized void appendUsingFileWriter(String text) {
+    private synchronized void appendUsingFileWriter(String text) throws IOException {
+        FileWriter fr = new FileWriter(new File(filename),true);
         try {
             fr.write(text);
         } catch (IOException e) {

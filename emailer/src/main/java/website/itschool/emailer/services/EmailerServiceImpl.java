@@ -2,6 +2,7 @@ package website.itschool.emailer.services;
 
 import website.itschool.emailer.servlets.dto.Subscription;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;

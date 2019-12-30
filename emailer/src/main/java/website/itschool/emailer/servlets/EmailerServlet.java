@@ -1,6 +1,5 @@
 package website.itschool.emailer.servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import website.itschool.emailer.services.EmailerService;
 import website.itschool.emailer.services.EmailerServiceQualifier;
@@ -37,6 +36,7 @@ public class EmailerServlet extends HttpServlet {
         } catch (Exception e) {
             resp.setStatus(500);
             resp.getWriter().println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

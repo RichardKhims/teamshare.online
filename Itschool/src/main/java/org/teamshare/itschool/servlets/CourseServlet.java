@@ -1,8 +1,7 @@
 package org.teamshare.itschool.servlets;
 
 import org.teamshare.itschool.services.CourseService;
-import org.teamshare.itschool.services.CourseServiceQualifier;
-import org.teamshare.itschool.utils.SerializeUtils;
+import org.teamshare.itschool.services.qualifiers.CourseServiceQualifier;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

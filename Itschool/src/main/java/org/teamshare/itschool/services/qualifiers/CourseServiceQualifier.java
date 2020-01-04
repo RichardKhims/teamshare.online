@@ -1,4 +1,4 @@
-package org.teamshare.itschool.services;
+package org.teamshare.itschool.services.qualifiers;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.ElementType;

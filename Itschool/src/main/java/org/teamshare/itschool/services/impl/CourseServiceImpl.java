@@ -1,7 +1,9 @@
-package org.teamshare.itschool.services;
+package org.teamshare.itschool.services.impl;
 
 import org.teamshare.itschool.dao.CourseDAO;
 import org.teamshare.itschool.dao.hibernate.qualifiers.HibernateCourseManagerQualifier;
+import org.teamshare.itschool.services.CourseService;
+import org.teamshare.itschool.services.qualifiers.CourseServiceQualifier;
 import org.teamshare.itschool.servlets.dto.CourseDTO;
 
 import javax.inject.Inject;

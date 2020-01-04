@@ -5,8 +5,12 @@ import org.teamshare.itschool.dao.hibernate.qualifiers.HibernateCourseManagerQua
 import org.teamshare.itschool.services.CourseService;
 import org.teamshare.itschool.services.qualifiers.CourseServiceQualifier;
 import org.teamshare.itschool.servlets.dto.CourseDTO;
+import org.teamshare.itschool.servlets.dto.CourseDurationDTO;
+import org.teamshare.itschool.servlets.dto.FeedbackDTO;
+import org.teamshare.itschool.servlets.dto.TeacherDTO;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 
 @CourseServiceQualifier
@@ -15,9 +19,18 @@ public class CourseServiceImpl implements CourseService {
     @HibernateCourseManagerQualifier
     private CourseDAO courseDAO;
 
-
     @Override
     public Long addCourse(CourseDTO course) {
+        return null;
+    }
+
+    @Override
+    public Long addCourseDuration(CourseDurationDTO courseDuration) {
+        return null;
+    }
+
+    @Override
+    public Long addTeacher(TeacherDTO teacher) {
         return null;
     }
 
@@ -27,7 +40,27 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<CourseDTO> getCoursesByType(String type) {
+    public List<CourseDurationDTO> getCourseDurationsForCourse(Long courseId) {
+        return null;
+    }
+
+    @Override
+    public List<CourseDurationDTO> getCourseDurationsInPeriod(Date start, Date end) {
+        return null;
+    }
+
+    @Override
+    public List<CourseDurationDTO> getCourseDurationsForStudent(Long studentId) {
+        return null;
+    }
+
+    @Override
+    public List<FeedbackDTO> getFeedbacksForCourse(Long courseId) {
+        return null;
+    }
+
+    @Override
+    public List<TeacherDTO> getTeachersForCourse(Long courseId) {
         return null;
     }
 }

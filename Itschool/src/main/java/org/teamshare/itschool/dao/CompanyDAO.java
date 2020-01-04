@@ -26,15 +26,15 @@ public interface CompanyDAO {
 
     /**
      * Получить список HR-менеджеров компании
-     * @param company
+     * @param companyId
      * @return
      */
-    List<HRManager> getHRManagersForCompany(Company company);
+    List<HRManager> getHRManagersForCompany(Long companyId);
 
     /**
      * Получить всех преподователей данной компании
-     * @param company
+     * @param companyId
      * @return
      */
-    List<Teacher> getTeachersForCompany(Company company);
+    List<Teacher> getTeachersForCompany(Long companyId);
 }

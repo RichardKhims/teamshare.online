@@ -24,6 +24,13 @@ public interface CourseDAO {
     Long addCourseDuration(CourseDuration courseDuration);
 
     /**
+     * Зарегистрировать нового учителя
+     * @param teacher
+     * @return
+     */
+    Long addTeacher(Teacher teacher);
+
+    /**
      * Получить информацию по курсу по id
      * @param id
      * @return
@@ -32,10 +39,10 @@ public interface CourseDAO {
 
     /**
      * Получить все мероприятия по заданному курсу
-     * @param course
+     * @param courseId
      * @return
      */
-    List<CourseDuration> getCourseDurationsForCourse(Course course);
+    List<CourseDuration> getCourseDurationsForCourse(Long courseId);
 
     /**
      * Получить список мероприятий за период
@@ -47,22 +54,22 @@ public interface CourseDAO {
 
     /**
      * Получить список всех мероприятий, на которых присутсвовал студент
-     * @param student
+     * @param studentId
      * @return
      */
-    List<CourseDuration> getCourseDurationsForStudent(Student student);
+    List<CourseDuration> getCourseDurationsForStudent(Long studentId);
 
     /**
      * Получить отзывы по курсу
-     * @param course
+     * @param courseId
      * @return
      */
-    List<Feedback> getFeedbacksForCourse(Course course);
+    List<Feedback> getFeedbacksForCourse(Long courseId);
 
     /**
      * Получить список учителей по курсу
-     * @param course
+     * @param courseId
      * @return
      */
-    List<Teacher> getTeachersForCourse(Course course);
+    List<Teacher> getTeachersForCourse(Long courseId);
 }

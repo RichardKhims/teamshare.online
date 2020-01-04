@@ -2,7 +2,8 @@ package org.teamshare.itschool.dao.hibernate;
 
 import org.hibernate.query.Query;
 import org.teamshare.itschool.dao.CourseDAO;
-import org.teamshare.itschool.dao.constants.CourseColumns;
+import org.teamshare.itschool.dao.constants.CourseDurationColumns;
+import org.teamshare.itschool.dao.constants.FeedbackColumns;
 import org.teamshare.itschool.dao.entity.*;
 import org.teamshare.itschool.dao.hibernate.qualifiers.HibernateCourseManagerQualifier;
 import org.teamshare.itschool.utils.HibernateUtils;
@@ -19,56 +20,61 @@ public class CourseDBManager implements CourseDAO {
     @Override
     @Transactional
     public Long addCourse(Course course) {
-        return (Long) HibernateUtils.getCurrentSession().save(course);
+        return HibernateUtils.addEntity(course);
     }
 
     @Override
     @Transactional
     public Long addCourseDuration(CourseDuration courseDuration) {
-        return (Long) HibernateUtils.getCurrentSession().save(courseDuration);
+        return HibernateUtils.addEntity(courseDuration);
+    }
+
+    @Override
+    @Transactional
+    public Long addTeacher(Teacher teacher) {
+        return HibernateUtils.addEntity(teacher);
     }
 
     @Override
     @Transactional
     public Course getCoursesById(Long id) {
-        return HibernateUtils.getCurrentSession().get(Course.class, id);
+        return HibernateUtils.getEntitiesById(id, Course.class);
     }
 
     @Override
-    public List<CourseDuration> getCourseDurationsForCourse(Course course) {
+    @Transactional
+    public List<CourseDuration> getCourseDurationsForCourse(Long courseId) {
         return null;
     }
 
     @Override
+    @Transactional
     public List<CourseDuration> getCourseDurationsInPeriod(Date start, Date end) {
+        CriteriaBuilder cb = HibernateUtils.createCriteriaBuilder();
+        CriteriaQuery<CourseDuration> query = cb.createQuery(CourseDuration.class);
+        Root<CourseDuration> root = query.from(CourseDuration.class);
+
+        query.select(root).where(cb.between(root.get(CourseDurationColumns.START_COLUMN), start, end));
+
+        Query<CourseDuration> res = HibernateUtils.getCurrentSession().createQuery(query);
+        return res.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public List<CourseDuration> getCourseDurationsForStudent(Long studentId) {
         return null;
     }
 
     @Override
-    public List<CourseDuration> getCourseDurationsForStudent(Student student) {
-        return null;
+    @Transactional
+    public List<Feedback> getFeedbacksForCourse(Long courseId) {
+        return HibernateUtils.makeQueryForParam(FeedbackColumns.COURSE_ID_COLUMN, courseId, Feedback.class).getResultList();
     }
 
     @Override
-    public List<Feedback> getFeedbacksForCourse(Course course) {
+    @Transactional
+    public List<Teacher> getTeachersForCourse(Long courseId) {
         return null;
     }
-
-    @Override
-    public List<Teacher> getTeachersForCourse(Course course) {
-        return null;
-    }
-
-    /*
-    public List<Course> getCoursesByType(String type) {
-        CriteriaBuilder criteriaBuilder = HibernateUtils.createCriteriaBuilder();
-        CriteriaQuery<Course> criteriaQuery = criteriaBuilder.createQuery(Course.class);
-        Root<Course> root = criteriaQuery.from(Course.class);
-
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get(CourseColumns.TYPE_COLUMN), type));
-
-        Query<Course> query = HibernateUtils.getCurrentSession().createQuery(criteriaQuery);
-        return query.getResultList();
-    }
-    */
 }

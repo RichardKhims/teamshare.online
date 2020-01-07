@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 @WebServlet("/courses")
 public class CourseServlet extends HttpServlet {
@@ -25,6 +26,23 @@ public class CourseServlet extends HttpServlet {
             String queryString = req.getQueryString();
             if (StringUtils.isEmpty(queryString)) {
                 resp.getWriter().println(SerializeUtils.toJson(courseService.getCourses()));
+            } else {
+                String[] queryParams = queryString.split("&");
+                String[] queryParam = queryParams[0].split("=");
+                if (queryParam.length < 2) {
+                    throw new URISyntaxException(queryParams[0], "Invalid query parameter", 0);
+                }
+
+                String queryParamKey = queryParam[0];
+                String queryParamValue = queryParam[1];
+
+                switch (queryParamKey) {
+                    case "id":
+                        resp.getWriter().println(SerializeUtils.toJson(courseService.getCoursesById(Long.parseLong(queryParamValue))));
+                        break;
+                    default:
+                        throw new URISyntaxException(queryParams[0], "Unknown query parameter", 0);
+                }
             }
         } catch (Exception e) {
             resp.setStatus(500);

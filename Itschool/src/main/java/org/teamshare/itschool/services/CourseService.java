@@ -31,6 +31,12 @@ public interface CourseService {
     Long addTeacher(TeacherDTO teacher);
 
     /**
+     * Получить список всех дисциплин
+     * @return
+     */
+    List<CourseDTO> getCourses();
+
+    /**
      * Получить информацию по курсу по id
      * @param id
      * @return

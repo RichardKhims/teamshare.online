@@ -37,6 +37,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<CourseDTO> getCourses() {
+        return courseDAO.getCourses().stream()
+                .map(ConverterUtils.courseConverter::convertTo)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public CourseDTO getCoursesById(Long id) {
         return ConverterUtils.courseConverter.convertTo(courseDAO.getCoursesById(id));
     }

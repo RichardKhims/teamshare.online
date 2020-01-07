@@ -1,7 +1,9 @@
 package org.teamshare.itschool.servlets;
 
+import org.apache.commons.lang3.StringUtils;
 import org.teamshare.itschool.services.CourseService;
 import org.teamshare.itschool.services.qualifiers.CourseServiceQualifier;
+import org.teamshare.itschool.utils.SerializeUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,8 +22,10 @@ public class CourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-//            String responseBody = SerializeUtils.toJson(courseService.getSpecificators());
-//            resp.getWriter().println(responseBody);
+            String queryString = req.getQueryString();
+            if (StringUtils.isEmpty(queryString)) {
+                resp.getWriter().println(SerializeUtils.toJson(courseService.getCourses()));
+            }
         } catch (Exception e) {
             resp.setStatus(500);
             resp.getWriter().println("Internal error");

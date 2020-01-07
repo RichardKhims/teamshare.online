@@ -43,6 +43,12 @@ public class CourseDBManager implements CourseDAO {
 
     @Override
     @Transactional
+    public List<Course> getCourses() {
+        return HibernateUtils.makeQueryForObject(Course.class).getResultList();
+    }
+
+    @Override
+    @Transactional
     public List<CourseDuration> getCourseDurationsForCourse(Long courseId) {
         return null;
     }

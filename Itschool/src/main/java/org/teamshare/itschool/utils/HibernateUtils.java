@@ -59,4 +59,15 @@ public class HibernateUtils {
 
         return HibernateUtils.getCurrentSession().createQuery(query);
     }
+
+    @Transactional
+    public static <T> Query<T> makeQueryForObject(Class<T> clazz) {
+        CriteriaBuilder cb = HibernateUtils.createCriteriaBuilder();
+        CriteriaQuery<T> query = cb.createQuery(clazz);
+        Root<T> root = query.from(clazz);
+
+        query.select(root);
+
+        return HibernateUtils.getCurrentSession().createQuery(query);
+    }
 }

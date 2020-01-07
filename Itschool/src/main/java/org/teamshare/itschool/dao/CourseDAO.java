@@ -31,6 +31,12 @@ public interface CourseDAO {
     Long addTeacher(Teacher teacher);
 
     /**
+     * Получить список всех дисциплин
+     * @return
+     */
+    List<Course> getCourses();
+
+    /**
      * Получить информацию по курсу по id
      * @param id
      * @return

@@ -3,6 +3,7 @@ package org.teamshare.itschool.services.impl;
 import org.teamshare.itschool.dao.StudentsDAO;
 import org.teamshare.itschool.dao.hibernate.qualifiers.HibernateStudentManagerQualifier;
 import org.teamshare.itschool.services.StudentService;
+import org.teamshare.itschool.services.qualifiers.StudentServiceQualifier;
 import org.teamshare.itschool.servlets.dto.StudentDTO;
 import org.teamshare.itschool.utils.ConverterUtils;
 
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@StudentServiceQualifier
 public class StudentServiceImpl implements StudentService {
     @Inject
     @HibernateStudentManagerQualifier

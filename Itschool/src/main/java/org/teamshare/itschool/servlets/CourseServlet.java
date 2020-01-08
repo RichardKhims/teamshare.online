@@ -1,9 +1,11 @@
 package org.teamshare.itschool.servlets;
 
+import javafx.util.Pair;
 import org.apache.commons.lang3.StringUtils;
 import org.teamshare.itschool.services.CourseService;
 import org.teamshare.itschool.services.qualifiers.CourseServiceQualifier;
 import org.teamshare.itschool.utils.SerializeUtils;
+import org.teamshare.itschool.utils.UrlUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -24,24 +26,19 @@ public class CourseServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String queryString = req.getQueryString();
+
             if (StringUtils.isEmpty(queryString)) {
                 resp.getWriter().println(SerializeUtils.toJson(courseService.getCourses()));
             } else {
-                String[] queryParams = queryString.split("&");
-                String[] queryParam = queryParams[0].split("=");
-                if (queryParam.length < 2) {
-                    throw new URISyntaxException(queryParams[0], "Invalid query parameter", 0);
-                }
+                Pair<String, String> firstQueryParam = UrlUtils.getFirstQueryParam(queryString);
 
-                String queryParamKey = queryParam[0];
-                String queryParamValue = queryParam[1];
-
-                switch (queryParamKey) {
+                switch (firstQueryParam.getKey()) {
                     case "id":
-                        resp.getWriter().println(SerializeUtils.toJson(courseService.getCoursesById(Long.parseLong(queryParamValue))));
+                        resp.getWriter().println(SerializeUtils.toJson(
+                                courseService.getCoursesById(Long.parseLong(firstQueryParam.getValue()))));
                         break;
                     default:
-                        throw new URISyntaxException(queryParams[0], "Unknown query parameter", 0);
+                        throw new URISyntaxException(queryString, "Unknown query parameter", 0);
                 }
             }
         } catch (Exception e) {
